@@ -54,7 +54,7 @@ This will enable proper encapsulation in JavaScript, even in cases where classes
 
 Example:
 
-````javascript
+````
 // Entry point to the library, needs encapsulation (should not be accessed from business logic)
 app/features/counter/lib.js
 

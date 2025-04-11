@@ -54,15 +54,15 @@ class を用いないことも一般的な javascript において、適切な�
 
 例：
 
-```javascript
+```
 //ライブラリとの接点、カプセル化したい（ビジネスロジックからは参照されたくない）
-app / features / counter / lib.js;
+app/features/counter/lib.js;
 
 //カウンタロジック実装、lib.js を使う
-app / features / counter / counter.js;
+app/features/counter/counter.js;
 
 //ビジネスロジック実装、counter.js を使う
-app / business.js;
+app/business.js;
 ```
 
 ---
