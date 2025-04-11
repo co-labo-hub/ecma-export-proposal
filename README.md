@@ -54,15 +54,16 @@ This will enable proper encapsulation in JavaScript, even in cases where classes
 
 Example:
 
-````
-// Entry point to the library, needs encapsulation (should not be accessed from business logic)
+```
 app/features/counter/lib.js
+  // Entry point to the library, needs encapsulation (should not be accessed from business logic)
 
-// Counter logic implementation, uses lib.js
 app/features/counter/counter.js
+  // Counter logic implementation, uses lib.js
 
-// Business logic implementation, uses counter.js
 app/business.js
+  // Business logic implementation, uses counter.js
+```
 
 ---
 
@@ -77,8 +78,8 @@ const count = storage.create('key');
 
 // Export only within the same directory for encapsulation
 export['./*'] const getCount = () => count.get();
-export['./*'] count setCount = (newValue) => count.set(newValue);
-````
+export['./*'] const setCount = (newValue) => count.set(newValue);
+```
 
 ---
 
@@ -101,6 +102,6 @@ app/business.js
 ```javascript
 import { getCount, addCount, resetCount } from "./features/counter";
 
-// 以下はインポートできない、ビジネスロジックでは以下の仕様を把握する必要がない
-// import { getCount, setCount } from './features/counter/lib';
+// The following cannot be imported, and the business logic does not need to know the following specifications:
+import { getCount, setCount } from "./features/counter/lib"; // error
 ```

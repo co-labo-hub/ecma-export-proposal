@@ -55,14 +55,14 @@ class を用いないことも一般的な javascript において、適切な�
 例：
 
 ```
-//ライブラリとの接点、カプセル化したい（ビジネスロジックからは参照されたくない）
 app/features/counter/lib.js;
+  //ライブラリとの接点、カプセル化したい（ビジネスロジックからは参照されたくない）
 
-//カウンタロジック実装、lib.js を使う
 app/features/counter/counter.js;
+  //カウンタロジック実装、lib.js を使う
 
-//ビジネスロジック実装、counter.js を使う
 app/business.js;
+  //ビジネスロジック実装、counter.js を使う
 ```
 
 ---
@@ -77,8 +77,8 @@ import storage from 'something-lib';
 const count = storage.create('key');
 
 // 同一ディレクトリ内にのみエクスポートしカプセル化
-export[./*] const getCount = () => count.get();
-export[./*] count setCount = (newValue) => count.set(newValue);
+export['./*'] const getCount = () => count.get();
+export['./*'] const setCount = (newValue) => count.set(newValue);
 ```
 
 ---
@@ -103,5 +103,5 @@ app/business.js
 import { getCount, addCount, resetCount } from "./features/counter";
 
 // 以下はインポートできない、ビジネスロジックでは以下の仕様を把握する必要がない
-// import { getCount, setCount } from './features/counter/lib';
+import { getCount, setCount } from "./features/counter/lib"; // error
 ```
